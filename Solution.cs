@@ -8,6 +8,31 @@ namespace LeetcodeIntegerToEnglishWords
 {
     public class Solution
     {
+        private readonly string[] _units = new string[]
+        {
+            "Zero",
+            "One",
+            "Two",
+            "Three",
+            "Four",
+            "Five",
+            "Six",
+            "Seven",
+            "Eight",
+            "Nine",
+            "Ten",
+            "Eleven",
+            "Twelve",
+            "Thirteen",
+            "Fourteen",
+            "Fifteen",
+            "Sixteen",
+            "Seventeen",
+            "Eighteen",
+            "Nineteen"
+        };
+
+
         public string NumberToWords(int num)
         {
             if (num == 0)
@@ -35,7 +60,7 @@ namespace LeetcodeIntegerToEnglishWords
         }
 
 
-        private string Create1(int num, string units)
+        private string Create1(int num, string unitName)
         {
             if (num > 999) throw new ArgumentException(nameof(num));
 
@@ -64,99 +89,45 @@ namespace LeetcodeIntegerToEnglishWords
             if (tens >= 90)
             {
                 sb.Append("Ninety ");
-                sb.Append(CreateForUnits(tens % 10));
             }
             else if (tens >= 80)
             {
                 sb.Append("Eighty ");
-                sb.Append(CreateForUnits(tens % 10));
             }
             else if (tens >= 70)
             {
                 sb.Append("Seventy ");
-                sb.Append(CreateForUnits(tens % 10));
             }
             else if (tens >= 60)
             {
                 sb.Append("Sixty ");
-                sb.Append(CreateForUnits(tens % 10));
             }
             else if (tens >= 50)
             {
                 sb.Append("Fifty ");
-                sb.Append(CreateForUnits(tens % 10));
             }
             else if (tens >= 40)
             {
                 sb.Append("Forty ");
-                sb.Append(CreateForUnits(tens % 10));
             }
             else if (tens >= 30)
             {
                 sb.Append("Thirty ");
-                sb.Append(CreateForUnits(tens % 10));
             }
             else if (tens >= 20)
             {
                 sb.Append("Twenty ");
-                sb.Append(CreateForUnits(tens % 10));
             }
-            else if (tens == 19)
-                sb.Append("Nineteen ");
-            else if (tens == 18)
-                sb.Append("Eighteen ");
-            else if (tens == 17)
-                sb.Append("Seventeen ");
-            else if (tens == 16)
-                sb.Append("Sixteen ");
-            else if (tens == 15)
-                sb.Append("Fifteen ");
-            else if (tens == 14)
-                sb.Append("Fourteen ");
-            else if (tens == 13)
-                sb.Append("Thirteen ");
-            else if (tens == 12)
-                sb.Append("Twelve ");
-            else if (tens == 11)
-                sb.Append("Eleven ");
-            else if (tens == 10)
-                sb.Append("Ten ");
-            else
-                sb.Append(CreateForUnits(tens));
+            else if (tens !=0)
+                sb.Append(_units[tens] + " ");
 
-            sb.Append(units);
+            if (tens >= 20 && tens %10 !=0)
+                sb.Append(_units[tens % 10] + " ");
+
+            sb.Append(unitName);
             
             return sb.ToString();
         }
-
-
-        private string CreateForUnits(int num)
-        {
-            StringBuilder sb = new();
-            if (num == 9)
-                sb.Append("Nine ");
-            else if (num == 8)
-                sb.Append("Eight ");
-            else if (num == 7)
-                sb.Append("Seven ");
-            else if (num == 6)
-                sb.Append("Six ");
-            else if (num == 5)
-                sb.Append("Five ");
-            else if (num == 4)
-                sb.Append("Four ");
-            else if (num == 3)
-                sb.Append("Three ");
-            else if (num == 2)
-                sb.Append("Two ");
-            else if (num == 1)
-                sb.Append("One ");
-
-            return sb.ToString();
-        }
-
-
-
 
     }
 }
