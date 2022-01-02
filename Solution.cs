@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace LeetcodeIntegerToEnglishWords
 {
     public class Solution
     {
-        private readonly string[] _units = new string[]
-        {
+        private readonly string[] _units = {
             "Zero",
             "One",
             "Two",
@@ -42,48 +37,46 @@ namespace LeetcodeIntegerToEnglishWords
 
             int billions = num / 1000000000;
             if (billions > 0)
-                sb.Append(Create1(billions, "Billion "));
+                Create1(sb,billions, "Billion ");
 
             int millions = (num % 1000000000) / 1000000;
             if (millions > 0)
-                sb.Append(Create1(millions, "Million "));
+                Create1(sb, millions, "Million ");
             
             int thousands = (num % 1000000) / 1000;
             if (thousands > 0)
-                sb.Append(Create1(thousands, "Thousand "));
+                Create1(sb, thousands, "Thousand ");
 
             int n4 = (num % 1000);
 
-            sb.Append(Create1(n4, string.Empty));
+            Create1(sb, n4, string.Empty);
 
             return sb.ToString().Trim();
         }
 
 
-        private string Create1(int num, string unitName)
+        private void Create1(StringBuilder sb, int num, string unitName)
         {
             if (num > 999) throw new ArgumentException(nameof(num));
-
-            StringBuilder sb = new();
 
             if (num >= 900)
                 sb.Append("Nine Hundred ");
             else if (num >= 800)
                 sb.Append("Eight Hundred ");
             else if (num >= 700)
-                sb.Append($"Seven Hundred ");
+                sb.Append("Seven Hundred ");
             else if (num >= 600)
-                sb.Append($"Six Hundred ");
+                sb.Append("Six Hundred ");
             else if (num >= 500)
-                sb.Append($"Five Hundred ");
+                sb.Append("Five Hundred ");
             else if (num >= 400)
-                sb.Append($"Four Hundred ");
+                sb.Append("Four Hundred ");
             else if (num >= 300)
-                sb.Append($"Three Hundred ");
+                sb.Append("Three Hundred ");
             else if (num >= 200)
-                sb.Append($"Two Hundred ");
+                sb.Append("Two Hundred ");
             else if (num >= 100)
-                sb.Append($"One Hundred ");
+                sb.Append("One Hundred ");
 
             var tens = num % 100;
             if (tens >= 90)
@@ -125,8 +118,6 @@ namespace LeetcodeIntegerToEnglishWords
                 sb.Append(_units[tens % 10] + " ");
 
             sb.Append(unitName);
-            
-            return sb.ToString();
         }
 
     }
