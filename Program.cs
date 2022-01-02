@@ -4,7 +4,7 @@ using LeetcodeIntegerToEnglishWords;
 
 var solution = new Solution();
 
-var number = 12345;
+var number = 123;
 string result;
 result = solution.NumberToWords(number);
 
