@@ -24,6 +24,12 @@ Runtime: 72 ms, faster than **88.49%** of C# online submissions for Integer to E
 Memory Usage: 36.9 MB, less than 66.30% of C# online submissions for Integer to English Words.
 
 
+** Final iteration **
+
+Runtime: 68 ms, faster than **96.71%** of C# online submissions for Integer to English Words.
+Memory Usage: 37 MB, less than 55.07% of C# online submissions for Integer to English Words.
+
+
 #### USAGE RIGHTS
 
 You are allowed to use this code for inspiration, but you are not permitted to submit this to Leetcode as your own. DON'T BE A CHEAT.
