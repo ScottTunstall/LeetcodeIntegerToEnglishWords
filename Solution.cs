@@ -10,6 +10,9 @@ namespace LeetcodeIntegerToEnglishWords
     {
         public string NumberToWords(int num)
         {
+            if (num == 0)
+                return "Zero";
+
             var sb = new StringBuilder();
 
             int billions = num / 1000000000;
