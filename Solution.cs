@@ -12,13 +12,17 @@ namespace LeetcodeIntegerToEnglishWords
         {
             var sb = new StringBuilder();
 
-            int millions = num / 1000000;
+            int billions = num / 1000000000;
+            if (billions > 0)
+                sb.Append(Create1(billions, "Billion "));
+
+            int millions = (num % 1000000000) / 1000000;
             if (millions > 0)
-                sb.Append(Create1(millions, "million "));
+                sb.Append(Create1(millions, "Million "));
             
             int thousands = (num % 1000000) / 1000;
             if (thousands > 0)
-                sb.Append(Create1(thousands, "thousand "));
+                sb.Append(Create1(thousands, "Thousand "));
 
             int n4 = (num % 1000);
 
